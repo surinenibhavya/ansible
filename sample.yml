@@ -1,6 +1,6 @@
 - name: Demo on Sample playbook
-    hosts: all
-    tasks:
-      - name: Example task
-        debug:
-          msg: "This is a sample task"
+  hosts: all
+  tasks:
+    - name: Example task
+      debug:
+        msg: "This is a sample task"
