@@ -6,7 +6,6 @@
     - name: Print URL
       ansible.builtin.debug:
         msg: URL ={{URL}}
-        
 #Note: variable on play level can be accessed in all tasks
 
 
