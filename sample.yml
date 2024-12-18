@@ -1,7 +1,10 @@
-- name: Demo on playbook
+- name: Variable on play level
   hosts: all
+  vars:
+    URL: play.example.com
   tasks:
-    - name: Print Hello message
+    - name: Print URL
       ansible.builtin.debug:
-        msg: Hello
+        msg: URL ={{URL}}
+
 
