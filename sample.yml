@@ -1,5 +1,5 @@
 - name: Print Hello
-  hosts: localhost
+  hosts: all
   tasks:
     - name: Print Hello message
       debug:
