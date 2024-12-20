@@ -31,16 +31,16 @@
       vars:
        URL: task2.example.com
 ##Note: Variable in one task cannot be accessed by other tasks
-##vars_files:
-##    - sampleya.yml
-## vars:
-# #      URL: pppp
+
 - name: Varibale Precedence
   hosts: all
   vars:
     URL: play level variable
+  vars_files:
+    - sampleya.yml
   tasks:
     - name: task1
       ansible.builtin.debug:
         msg: URL ={{URL}}
-
+      vars:
+        URL: pp.com
