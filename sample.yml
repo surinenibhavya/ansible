@@ -30,3 +30,4 @@
           msg: URL ={{URL}}
       vars:
        URL: task2.example.com
+##Note: Variable in one task cannot be accessed by other tasks
