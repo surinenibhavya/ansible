@@ -34,7 +34,7 @@
 - name: Varibale Precedence
   hosts: all
   vars:
-    URL:play level variable
+    URL: play level variable
   vars_files:
     - sampleya.yml
   tasks:
