@@ -19,11 +19,12 @@
 - name: Variable on tast level
   hosts: all
   tasks:
-    - name: Print URL
+    - name: Print URL in task1
       ansible.builtin.debug:
         msg: URL ={{URL}}
       vars: task1.example.com
-    - name: Print URL
+
+    - name: Print URL in task2
       ansible.builtin.debug:
           msg: URL ={{URL}}
         vars: task2.example.com
