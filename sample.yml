@@ -33,6 +33,8 @@
 ##Note: Variable in one task cannot be accessed by other tasks
 ##vars_files:
 ##    - sampleya.yml
+## vars:
+# #      URL: pppp
 - name: Varibale Precedence
   hosts: all
   vars:
@@ -41,5 +43,4 @@
     - name: task1
       ansible.builtin.debug:
         msg: URL ={{URL}}
-      vars:
-       URL: pppp
+
