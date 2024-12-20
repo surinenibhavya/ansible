@@ -50,3 +50,11 @@
         msg: URL ={{URL}}
       vars:
         URL: pp.com
+##Print hostname of remote node
+- name: Print hostname of remote node
+  hosts: all
+  tasks:
+    - name: Print hostname
+      ansible.builtin.debug:
+        msg: Hostname = {{ansible_hostname}}
+        
