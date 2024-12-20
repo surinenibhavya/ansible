@@ -41,5 +41,5 @@
     - name: task1
       ansible.builtin.debug:
         msg: URL ={{URL}}
-      var:
+      vars:
        URL: pppp
