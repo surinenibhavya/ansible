@@ -22,11 +22,11 @@
     - name: Print URL in task1
       ansible.builtin.debug:
         msg: URL ={{URL}}
-      vars: task1.example.com
+      vars:
+       URL: task1.example.com
 
     - name: Print URL in task2
       ansible.builtin.debug:
           msg: URL ={{URL}}
-      vars: task2.example.com
-
-
+      vars:
+       URL: task2.example.com
