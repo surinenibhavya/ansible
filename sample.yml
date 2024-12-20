@@ -9,8 +9,8 @@
 ##Note: variable on play level can be accessed in all tasks
 - name: Variable from file
   hosts: all
-  vars_file:
-    - sampleya.yml
+  vars_files:
+    - sample-vars.yml
   tasks:
     - name: Print URL
       ansible.builtin.debug:
