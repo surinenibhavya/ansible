@@ -6,8 +6,8 @@
     - name: Print URL
       ansible.builtin.debug:
         msg: URL ={{URL}}
-##Note: variable on play level can be accessed in all tasks
-- name: Variable from file
+##Note: variable on play level-all tasks can access
+- name: Variable from file on play level
   hosts: all
   vars_files:
     - sampleya.yml
@@ -15,7 +15,17 @@
     - name: Print URL
       ansible.builtin.debug:
        msg: URL ={{URL}}
-
-
+##Note:Variable file on play level-all tasks can access
+- name: Variable on tast level
+  hosts: all
+  tasks:
+    - name: Print URL
+      ansible.builtin.debug:
+        msg: URL ={{URL}}
+      vars: task1.example.com
+    - name: Print URL
+        ansible.builtin.debug:
+          msg: URL ={{URL}}
+        vars: task2.example.com
 
 
