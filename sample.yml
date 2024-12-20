@@ -31,6 +31,12 @@
       vars:
        URL: task2.example.com
 ##Note: Variable in one task cannot be accessed by other tasks
+- name: Variable on play level
+  hosts: all
+  tasks:
+    - name: Print URL
+      ansible.builtin.debug:
+        msg: URL ={{URL}}
 
 - name: Varibale Precedence
   hosts: all
