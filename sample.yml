@@ -74,4 +74,3 @@
     - name: Print OUT variable
       ansible.builtin.debug:
         msg: "{{OUT.stdout}}"
-      
