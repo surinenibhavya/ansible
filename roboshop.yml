@@ -1,0 +1,4 @@
+- name: Setuo Frontend component
+  hosts: FRONTEND
+  roles:
+    - frontend
