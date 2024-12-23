@@ -2,3 +2,24 @@
   ansible.builtin.yum:
     name: nginx
     state: latest
+
+- name: Unarchive a file that needs to be downloaded (added in 2.0)
+  unarchive:
+    src:https://github.com/roboshop-devops-project/frontend/archive/main.zip
+    dest: /tmp
+    remote_src: yes
+
+- name: Remove previous content
+  ansible.builtin.file:
+    path: /usr/share/nginx/html
+    state: absent
+
+- name: Copy Roboshop content
+    ansible.builtin.copy:
+      src: /tmp/frontend-main/static/
+      dest: /usr/share/nginx/html/
+- name: Start nginx
+    ansible.builtin.systemd:
+      name: nginx
+      state: restarted
+      enabled: yes
