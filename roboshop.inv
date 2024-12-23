@@ -2,4 +2,22 @@
 frontend.roboshop.internal
 
 [MONGODB]
-monogodb.roboshop.internal
+
+[CATALOGUE]
+
+[REDIS]
+
+[USER]
+
+[CART]
+
+[MYSQL]
+
+[SHIPPING]
+
+[RABBITMQ]
+
+[PAYMENT]
+
+[DISPATCH]
+
