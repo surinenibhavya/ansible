@@ -1,4 +1,4 @@
-- name: Setuo Frontend component
+- name: Setup Frontend component
   hosts: FRONTEND
   roles:
     - frontend
