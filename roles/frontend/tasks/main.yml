@@ -6,7 +6,7 @@
 - name: Unarchive a file that needs to be downloaded (added in 2.0)
   unarchive:
     src:https://github.com/roboshop-devops-project/frontend/archive/main.zip
-    dest: /tmp
+    dest:/tmp
     remote_src: yes
 
 - name: Remove previous content
