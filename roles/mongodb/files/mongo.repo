@@ -5,5 +5,5 @@ gpgcheck=1
 enabled=1
 gpgkey=https://www.mongodb.org/static/pgp/server-5.0.asc
 
-sudo yum update -y
-sudo yum install -y mongodb-org-shell
+
+

@@ -5,8 +5,9 @@
 
 - name: Install Mongodb
   ansible.builtin.yum:
-      name: mongodb-org
+      name: mongodb-mongosh
       state: installed
+
 
 - name: Replace IP address
   ansible.builtin.replace:
