@@ -25,12 +25,12 @@
       name: common
       tasks_from: download# cd /tmp
 
-name: Run a js file for catalogue
+- name: Run a js file for catalogue
     community.mongodb.mongodb_shell:
         file: "/tmp/mongodb-main/catalogue.js"
         idempotent: yes
 
-name: Run a js file for user
+- name: Run a js file for user
     community.mongodb.mongodb_shell:
         file: "/tmp/mongodb-main/user.js"
         idempotent: yes
