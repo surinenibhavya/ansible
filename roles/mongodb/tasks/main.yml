@@ -26,14 +26,11 @@
       name: common
       tasks_from: download
 
-- name: Run a js file for catalogue
+- name: Load schema
   community.mongodb.mongodb_shell:
-    file: "/tmp/mongodb-main/catalogue.js"
+    file: "/tmp/mongodb-main/{{item}}.js"
     idempotent: yes
-
-- name: Run a js file for user
-  community.mongodb.mongodb_shell:
-    file: "/tmp/mongodb-main/users.js"
-    idempotent: yes
-
+  loop:
+    - catalogue
+    - user
 
