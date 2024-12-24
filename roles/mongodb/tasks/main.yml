@@ -20,13 +20,19 @@
       state: restarted
       enabled: yes
 
+- name: Download database scheme
+  ansible.builtin.import_role:
+      name: common
+      tasks_from: download# cd /tmp
 
-# curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip"
+name: Run a js file for catalogue
+    community.mongodb.mongodb_shell:
+        file: "/tmp/mongodb-main/catalogue.js"
+        idempotent: yes
 
-# cd /tmp
-# unzip mongodb.zip
-# cd mongodb-main
-# mongo < catalogue.js
-# mongo < users.js
+name: Run a js file for user
+    community.mongodb.mongodb_shell:
+        file: "/tmp/mongodb-main/user.js"
+        idempotent: yes
 
 
