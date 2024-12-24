@@ -4,6 +4,6 @@
     - name: Demo
       debug:
         msg: Hello,{{item}}
-    - name: List
+    loop:
       - honey
       - bhavya
