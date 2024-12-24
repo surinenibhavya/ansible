@@ -3,15 +3,4 @@
   tasks:
     - name: Demo
       debug:
-        msg:Hello,
----
-- name: Demo on loops
-  hosts: localhost
-  tasks:
-    - name: Print messages
-      debug:
-        msg: "Hello, {{ item }}!"
-      loop:
-        - Alice
-        - Bob
-        - Charlie
+        msg: Hello,
