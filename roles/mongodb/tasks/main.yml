@@ -23,7 +23,7 @@
 - name: Download database scheme
   ansible.builtin.import_role:
       name: common
-      tasks_from: download# cd /tmp
+      tasks_from: download
 
 - name: Run a js file for catalogue
   community.mongodb.mongodb_shell:
