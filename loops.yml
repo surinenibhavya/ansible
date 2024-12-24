@@ -3,4 +3,7 @@
   tasks:
     - name: Demo
       debug:
-        msg: Hello,
+        msg: Hello,{{item}}
+    -name: List
+      -honey
+      -bhavya
