@@ -10,7 +10,7 @@
       - bhavya
     - name: Demo on list values,Map
       debug:
-        msg: "Hello,{{item.name}}Welcome to {{item.coursename}}"
+        msg: "Hello,{{item.name}} Welcome to {{item.coursename}}"
       loop:
         - {name: Honey,coursename: Devops}
         - {name: Bhavya,coursename: Aws}
