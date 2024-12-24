@@ -1,0 +1,29 @@
+- name: Copy mongobd repo
+  ansible.builtin.copy:
+      src: mongo.repo
+      dest: /etc/yum.repos.d/
+
+- name: Install Mongodb
+  ansible.builtin.yum:
+      name: mongodb-org
+      state: installed
+
+- name: Replace IP address
+  ansible.builtin.replace:
+      path:  /etc/mongod.conf
+      regexp: 127.0.0.1
+      replace: 0.0.0.0
+
+- name: Start mongodb
+  ansible.builtin.systemd:
+      name: mongodb-org
+      state: restarted
+      enabled: yes
+  # curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip"
+
+  # cd /tmp
+  # unzip mongodb.zip
+  # cd mongodb-main
+  # mongo < catalogue.js
+  # mongo < users.js
+
