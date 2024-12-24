@@ -1,5 +1,5 @@
-- name: Setup Frontend component
-  hosts: FRONTEND
+- name: Setup mongodb component
+  hosts: mongodb
   become: yes
   roles:
-    - frontend
+    - mongodb
