@@ -5,5 +5,5 @@
       debug:
         msg: Hello,{{item}}
     - name: List
-      -honey
-      -bhavya
+      - honey
+      - bhavya
