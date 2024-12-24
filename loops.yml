@@ -3,8 +3,8 @@
   tasks:
     - name: Demo
       debug:
-        msg: Hello,{{item}}
-    loop:
+        msg: "Hello,{{item}}"
+      loop:
       - Surineni
       - honey
       - bhavya
