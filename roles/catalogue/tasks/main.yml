@@ -1,2 +1,2 @@
-- name: Setup a Nodes jsrepo
+- name: Setup a Nodes Js Repo
   ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
