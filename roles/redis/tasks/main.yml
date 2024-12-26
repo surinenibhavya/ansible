@@ -9,7 +9,7 @@
     state: present
 
 - name: Enable Remi's Redis module
-  ansible.builtin.yum_module:
+  ansible.builtin.dnf:
     name: redis:remi-6.2
     state: installed
 
