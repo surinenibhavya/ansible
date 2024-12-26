@@ -16,3 +16,9 @@
   loop:
     - /etc/redis.conf
     - /etc/redis/redis.conf
+
+name: Start redis
+  ansible.builtin.systemd:
+    name: redis
+    state: restarted
+    enabled: yes
