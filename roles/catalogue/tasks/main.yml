@@ -38,6 +38,7 @@
 - name: Install catalogue dependencies
   community.general.npm:
     path: /home/roboshop/catalogue
+  become: yes
   become_user: roboshop
 
 - name: Copy catalogue
