@@ -40,10 +40,10 @@
     path: /home/roboshop/catalogue
   become_user: roboshop
 
-- name: Setup catalgue systemd config file
-  ansible.builtin.template:
-    src: systemd.service
-    dest: /etc/systemd/system/catalogue.service
+- name: Copy mongobd repo
+  ansible.builtin.copy:
+   src:  systemd.service
+   dest: /etc/systemd/system/catalogue.service
 
 - name: start catalogue service
   ansible.builtin.systemd:
