@@ -30,6 +30,7 @@
    src: /tmp/catalogue-main
    dest: /home/roboshop/catalogue
    remote_src: yes
+   become: yes
    become_user: roboshop
 
 - name: Install catalogue dependencies
