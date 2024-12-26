@@ -4,9 +4,8 @@
    state: present
 
 - name: Import Remi's GPG key
-  ansible.builtin.rpm:
-   name: https://rpms.remirepo.net/RPM-GPG-KEY-remi
-   state: present
+  ansible.builtin.command:
+    cmd: rpm --import https://rpms.remirepo.net/RPM-GPG-KEY-remi
 
 - name: Install Remi's repository
   ansible.builtin.yum:
