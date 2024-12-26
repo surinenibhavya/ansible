@@ -1,10 +1,5 @@
-- name: Setup mongodb component
-  hosts: MONGODB
+- name: Setup Redis component
+  hosts: Redis
   become: yes
   roles:
-    - mongodb
-- name: Setup catalogue component
-  hosts: CATALOGUE
-  become: yes
-  roles:
-    - catalogue
+    - redis
