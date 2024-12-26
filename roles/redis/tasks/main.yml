@@ -1,16 +1,11 @@
-- name: Install EPEL repository
-  ansible.builtin.yum:
-    name: epel-release
-    state: present
+- name: Setup a repo file
+  ansible.builtin.copy:
+    src: redis.repo
+    dest: /etc/yum.repos.d/redis.repo
 
-- name: Install Remi's repository
+- name: Install Redis
   ansible.builtin.yum:
-    name: http://rpms.remirepo.net/enterprise/remi-release-8.rpm
-    state: present
-
-- name: Enable Remi's Redis module
-  ansible.builtin.dnf:
-    name: redis:remi-6.2
+    name: redis
     state: installed
 
 - name: Update the IP address
@@ -20,7 +15,6 @@
     replace: "0.0.0.0"
   loop:
     - /etc/redis.conf
-    - /etc/redis/redis.conf
 
 - name: Start redis
   ansible.builtin.systemd:
