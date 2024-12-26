@@ -5,7 +5,9 @@
 
 - name: Import Remi's GPG key
   ansible.builtin.command:
-    cmd: rpm --import https://rpms.remirepo.net/RPM-GPG-KEY-remi
+   cmd: rpm --import https://rpms.remirepo.net/RPM-GPG-KEY-remi
+  args:
+   warn: false
 
 - name: Install Remi's repository
   ansible.builtin.yum:
@@ -13,10 +15,8 @@
    state: present
 
 - name: Enable Remi's Redis module
-  ansible.builtin.dnf:
-    name: redis:remi-6.2
-    state: present
-    enablerepo: remi
+  ansible.builtin.command:
+    cmd: dnf module enable redis:remi-6.2
 
 - name: Install Redis
   ansible.builtin.yum:
