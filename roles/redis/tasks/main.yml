@@ -3,6 +3,11 @@
     name: epel-release
     state: present
 
+- name: Manually download Remi's GPG key
+  ansible.builtin.get_url:
+   url: https://rpms.remirepo.net/RPM-GPG-KEY-remi
+   dest: /etc/pki/rpm-gpg/RPM-GPG-KEY-remi
+
 - name: Import Remi's GPG key
   ansible.builtin.command:
     cmd: rpm --import https://rpms.remirepo.net/RPM-GPG-KEY-remi
