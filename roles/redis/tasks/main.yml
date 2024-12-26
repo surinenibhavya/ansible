@@ -1,19 +1,8 @@
-- name: Install required packages
-  ansible.builtin.yum:
-   name:
-    - epel-release
-    - yum-utils
-   state: present
-
-- name: Install Remi's repository
-  ansible.builtin.yum:
-   name: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
-   state: present
-
-- name: Enable Remi's Redis module
-  ansible.builtin.command:
-    cmd: yum-config-manager --enable remi
-
+- name: Install the nginx rpm from a remote repo
+  ansible.builtin.dnf:
+    name: 'https://rpms.remirepo.net/enterprise/remi-release-8.rpm'
+    state: present
+    
 - name: Install Redis
   ansible.builtin.yum:
     name: redis
