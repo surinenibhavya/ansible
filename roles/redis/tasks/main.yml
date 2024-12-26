@@ -3,10 +3,10 @@
     src: redis.repo
     dest: /etc/yum.repos.d/redis.repo
 
-- name: Install repo file
+- name: Install Redis
   ansible.builtin.yum:
     name: redis
-    state: Installed
+    state: installed
 
 - name: Update the IP address
   ansible.builtin.replace:
