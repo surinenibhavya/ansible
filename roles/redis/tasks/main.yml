@@ -1,12 +1,23 @@
+- name: Install EPEL repository
+  ansible.builtin.yum:
+   name: epel-release
+   state: present
+
+- name: Import Remi's GPG key
+  ansible.builtin.rpm:
+   name: https://rpms.remirepo.net/RPM-GPG-KEY-remi
+   state: present
+
 - name: Install Remi's repository
   ansible.builtin.yum:
-    name: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
-    state: present
+   name: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+   state: present
 
 - name: Enable Remi's Redis module
-  ansible.builtin.command:
-    cmd: dnf module enable redis:remi-6.2 -y
-    creates: /etc/yum.repos.d/remi-redis-6.2.repo
+  ansible.builtin.dnf:
+    name: redis:remi-6.2
+    state: present
+    enablerepo: remi
 
 - name: Install Redis
   ansible.builtin.yum:
