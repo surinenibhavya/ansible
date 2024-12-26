@@ -30,14 +30,14 @@
    src: /tmp/catalogue-main
    dest: /home/roboshop/catalogue
    remote_src: yes
-   become: yes
-   become_user: roboshop
+  
+- name: Change ownership of copied content
+  ansible.builtin.command: chown -R roboshop:roboshop /home/roboshop/catalogue
+  become: yes
 
 - name: Install catalogue dependencies
   community.general.npm:
     path:  /home/roboshop/catalogue
   become_user: roboshop
 
-- name: Change ownership of copied content
-  ansible.builtin.command: chown -R roboshop:roboshop /home/roboshop/catalogue
-  become: yes
+
