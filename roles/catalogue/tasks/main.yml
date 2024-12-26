@@ -40,7 +40,7 @@
     path: /home/roboshop/catalogue
   become_user: roboshop
 
-- name: Copy mongobd repo
+- name: Copy catalogue 
   ansible.builtin.copy:
    src:  systemd.service
    dest: /etc/systemd/system/catalogue.service
