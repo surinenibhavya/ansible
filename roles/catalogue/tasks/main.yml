@@ -35,7 +35,8 @@
   ansible.builtin.command: chown -R roboshop:roboshop /home/roboshop/catalogue
   become: yes
 
-
-
-
+- name: Install catalogue dependencies
+  coummity.general.npm:
+    path: .home/roboshop/catalogue
+  become_user: roboshop
 
