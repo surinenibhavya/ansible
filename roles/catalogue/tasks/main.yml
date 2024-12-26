@@ -40,9 +40,9 @@
     path: /home/roboshop/catalogue
   become_user: roboshop
 
-- name: Copy catalogue 
-  ansible.builtin.copy:
-   src:  systemd.service
+- name: Copy catalogue
+  ansible.builtin.template:
+   src:  template/systemd.service
    dest: /etc/systemd/system/catalogue.service
 
 - name: start catalogue service
