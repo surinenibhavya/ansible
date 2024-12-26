@@ -1,26 +1,23 @@
-- name: Install the nginx rpm from a remote repo
-  ansible.builtin.dnf:
-    name: 'https://rpms.remirepo.net/enterprise/remi-release-8.rpm'
-    state: present
+- name: Setup Redis repo
+  ansible.builtin.copy:
+    src: redis.repo
+    dest: /etc/yum.repos.d/redis.repo
 
-- name: Enable Remi's Redis module
-  ansible.builtin.command:
-    cmd: dnf module enable redis:remi-6.2 -y
-    
 - name: Install Redis
   ansible.builtin.yum:
     name: redis
-    state: present
+    state: installed
 
-- name: Update the IP address
+- name: Update Redis config file
   ansible.builtin.replace:
     path: "{{item}}"
     regexp: "127.0.0.1"
-    replace: "0.0.0.0"
+    replace: '0.0.0.0'
   loop:
     - /etc/redis.conf
+    - /etc/redis/redis.conf
 
-- name: Start redis
+- name: Start redis service
   ansible.builtin.systemd:
     name: redis
     state: restarted
