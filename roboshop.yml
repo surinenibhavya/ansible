@@ -1,5 +1,5 @@
-- name: Setup Redis component
-  hosts: REDIS
+- name: Setup frontend component
+  hosts: FRONTEND
   become: yes
   roles:
     - redis
