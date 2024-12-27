@@ -2,4 +2,4 @@
   hosts: FRONTEND
   become: yes
   roles:
-    - redis
+    - frontend
