@@ -23,10 +23,19 @@
   roles:
     - catalogue
 
+- name: Setup redis component
+  hosts: REDIS
+  become: yes
+  tags:
+    - redis
+  roles:
+    - redis
+
+
 - name: Setup user component
   hosts: USER
   become: yes
   tags:
-    - catalogue
+    - user
   roles:
     - user
