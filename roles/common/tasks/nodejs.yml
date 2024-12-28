@@ -20,9 +20,9 @@
     name: common
     tasks_from: download
 
-- name: Celan old app code
+- name: Clean old app code
   ansible.builtin.file:
-    path: /home/roboshop/{{COMPONENT}}
+    path: /home/roboshop/"{{COMPONENT}}"
     state: absent
 
 - name: Copy content
