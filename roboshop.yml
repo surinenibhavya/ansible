@@ -1,5 +1,32 @@
 - name: Setup frontend component
   hosts: FRONTEND
   become: yes
+  tags:
+    - frontend
   roles:
     - frontend
+
+
+- name: Setup mongodb component
+  hosts: MONGODB
+  become: yes
+  tags:
+    - mongodb
+  roles:
+    - mongodb
+
+- name: Setup catalogue component
+  hosts: CATALOGUE
+  become: yes
+  tags:
+    - catalogue
+  roles:
+    - catalogue
+
+- name: Setup user component
+  hosts: USER
+  become: yes
+  tags:
+    - catalogue
+  roles:
+    - user
