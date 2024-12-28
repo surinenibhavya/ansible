@@ -1,6 +1,6 @@
-- name: Setup Repo file for NodeJS
+- name: Setup a Nodes Js Repo
   ansible.builtin.copy:
-    src: nodejs.repo
+    src: nodesjs.repo
     dest: /etc/yum.repos.d/nodejs.repo
 
 - name: Install NodeJS
@@ -10,21 +10,42 @@
       - gcc-c++
     state: installed
 
-- name: Setup App User and App Code
+- name: Add Application user
+  ansible.builtin.user:
+    name: roboshop
+    state: present
+
+- name: Download app code:
   ansible.builtin.import_role:
     name: common
     tasks_from: download
 
-- name: Install {{COMPONENT}} Dependencies
+- name: Celan old app code
+  ansible.builtin.file:
+    path: /home/roboshop/{{COMPONENT}}
+    state: absent
+
+- name: Copy content
+  ansible.builtin.copy:
+    src: /tmp/{{COMPONENT}}/
+    dest: /home/roboshop/{{COMPONENT}}/
+    remote_src: yes
+  become_user: roboshop
+
+- name: Install {{COMPONENT}} dependencies
   community.general.npm:
-   path: /home/roboshop/{{COMPONENT}}
-   become_user: roboshop
+    path: /home/roboshop/{{COMPONENT}}
+  become: yes
+  become_user: roboshop
 
-- name: Install {{COMPONENT}} Dependencies
-   shell: cd /home/roboshop/{{COMPONENT}} && npm install
-   become_user: roboshop
+- name: Copy {{COMPONENT}}
+  ansible.builtin.template:
+    src:  template/systemd.service
+    dest: /etc/systemd/system/{{COMPONENT}}.service
 
-- name: Configure SystemD for {{COMPONENT}}
-  ansible.builtin.import_role:
-    name: common
-    tasks_from: systemd
+- name: start {{COMPONENT}} service
+  ansible.builtin.systemd:
+    name: "{{COMPONENT}}"
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
