@@ -15,7 +15,7 @@
     name: roboshop
     state: present
 
-- name: Download app code:
+- name: Download app code
   ansible.builtin.import_role:
     name: common
     tasks_from: download
