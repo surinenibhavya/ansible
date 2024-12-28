@@ -52,11 +52,11 @@
     daemon_reload: yes
 
 - name: Get status of {{COMPONENT}} service
-    ansible.builtin.systemd:
+  ansible.builtin.systemd:
       name: "{{COMPONENT}}".service
       state: started
     register: {{COMPONENT}}_status
 
-    - name: Debug {{COMPONENT}}service status
-      ansible.builtin.debug:
+- name: Debug {{COMPONENT}}service status
+  ansible.builtin.debug:
         var: {{COMPONENT}}_status
