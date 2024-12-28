@@ -51,12 +51,3 @@
     enabled: yes
     daemon_reload: yes
 
-- name: Get status of {{COMPONENT}} service
-  ansible.builtin.systemd:
-      name: user.service
-      state: started
-    register: user_status
-
-- name: Debug user service status
-  ansible.builtin.debug:
-        var:user_status
