@@ -1,0 +1,21 @@
+- name: Copy mysql repo
+  ansible.builtin.copy:
+    src: mysql.repo
+    dest: /etc/yum.repos.d/mysql.repo
+
+- name: Disable MySQL module
+  ansible.builtin.dnf:
+    name: mysql
+    state: disabled
+
+- name: Install mysql community
+  ansible.builtin.yum:
+    name: mysql-community-server
+    state: disabled
+
+- name: Start the service
+  ansible.builtin.systemd:
+    name: mysqld
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
