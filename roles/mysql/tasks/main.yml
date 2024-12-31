@@ -23,7 +23,6 @@
      login_user: root
      login_password: RoboShop@1
      filter: databases
-     ignore_errors: yes
      register: check_pass
 
 - name: Find the password
