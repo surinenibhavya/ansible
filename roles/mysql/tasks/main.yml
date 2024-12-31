@@ -23,7 +23,6 @@
      login_user: root
      login_password: RoboShop@1
      filter: databases
-     register: check_pass
 
 - name: Find the password
   ansible.builtin.shell: grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}'
