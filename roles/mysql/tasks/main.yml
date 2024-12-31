@@ -1,38 +1,42 @@
-- name: Copy mysql repo
-  ansible.builtin.copy:
-    src: mysql.repo
-    dest: /etc/yum.repos.d/mysql.repo
+---
+- name: Setup MySQL Community Server
+  hosts: all
+  become: yes
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  tasks:
+    - name: Copy mysql repo
+      ansible.builtin.copy:
+        src: mysql.repo
+        dest: /etc/yum.repos.d/mysql.repo
 
-- name: Disable MySQL module
-  ansible.builtin.shell:
-   cmd: dnf module disable mysql -y
+    - name: Disable MySQL module
+      ansible.builtin.shell:
+        cmd: dnf module disable mysql -y
 
-- name: Disable MySQL module
-  ansible.builtin.dnf:
-    name: mysql
-    state: absent
+    - name: Disable MySQL package
+      ansible.builtin.dnf:
+        name: mysql
+        state: absent
 
-- name: Install mysql community
-  ansible.builtin.yum:
-    name: mysql-community-server
-    state: installed
-    
-- name: Start the service
-  ansible.builtin.systemd:
-    name: mysqld
-    state: restarted
-    enabled: true
+    - name: Install mysql community
+      ansible.builtin.yum:
+        name: mysql-community-server
+        state: installed
 
-- name: Check if password is expiring
-  mysql_info:
-     login_user: root
-     login_password: RoboShop@1
-     filter: databases
+    - name: Install python3-PyMySQL
+      ansible.builtin.yum:
+        name: python3-PyMySQL
+        state: present
 
-- name: Find the password
-  ansible.builtin.shell: grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}'
-  register: mysql_output
+    - name: Start the MySQL service
+      ansible.builtin.systemd:
+        name: mysqld
+        state: restarted
+        enabled: true
 
-- name: Print
-  debug:
-    msg: "{{mysql_output}}"
+    - name: Check if password is expiring
+      mysql_info:
+        login_user: root
+        login_password: RoboShop@1
+        filter: databases
