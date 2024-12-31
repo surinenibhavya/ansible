@@ -1,4 +1,3 @@
----
 - name: Setup MySQL Community Server
   hosts: all
   become: yes
