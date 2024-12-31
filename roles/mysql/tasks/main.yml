@@ -4,10 +4,13 @@
     dest: /etc/yum.repos.d/mysql.repo
 
 - name: Disable default MySQL module
-  ansible.builtin.yum:
+  ansible.builtin.dnf:
     name: "@mysql"
     state: absent
-    module_hotfixes: yes
+
+- name: Clean dnf cache
+  ansible.builtin.command:
+    cmd: dnf clean all
 
 - name: Install MySQL community server
   ansible.builtin.dnf:
