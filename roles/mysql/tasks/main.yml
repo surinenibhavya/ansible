@@ -9,9 +9,8 @@
 
 - name: Install MySQL community server
   ansible.builtin.def:
-    - name:
-       - mysql-community-server
-      state: present
+    name: mysql-community-server
+    state: present
 
 - name: Start the service
   ansible.builtin.systemd:
