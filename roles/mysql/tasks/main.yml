@@ -19,7 +19,7 @@
     state: restarted
     enabled: true
 
- - name: Check if password is expiring
+- name: Check if password is expiring
    mysql_info:
      login_user: root
      login_password: RoboShop@1
