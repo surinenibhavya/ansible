@@ -7,6 +7,7 @@
   ansible.builtin.dnf:
     name: "@mysql"
     state: absent
+    disable_modular: yes
 
 - name: Install MySQL community server
   ansible.builtin.dnf:
