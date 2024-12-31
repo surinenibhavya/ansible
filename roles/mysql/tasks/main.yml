@@ -7,16 +7,17 @@
   ansible.builtin.shell:
    cmd: dnf module disable mysql -y
 
-- name: Install MySQL Server
+- name: Install MySQL Community Server
   hosts: all
   become: yes
   vars:
     ansible_python_interpreter: /usr/bin/python3
-  ansible.builtin.yum:
-    name:
-      - mysql-community-server
-    state: installed
-
+  tasks:
+    - name: Install MySQL community server
+      ansible.builtin.yum:
+        name: mysql-community-server
+        state: present
+        
 - name: Start the service
   ansible.builtin.systemd:
     name: mysqld
