@@ -6,12 +6,12 @@
 - name: Disable MySQL module
   ansible.builtin.dnf:
     name: mysql
-    state: disabled
+    state: absent
 
 - name: Install mysql community
   ansible.builtin.yum:
     name: mysql-community-server
-    state: disabled
+    state: absent
 
 - name: Start the service
   ansible.builtin.systemd:
