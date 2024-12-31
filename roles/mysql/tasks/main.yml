@@ -7,8 +7,12 @@
   ansible.builtin.yum:
     name:
       - mysql-community-server
-      - PyMySQL
     state: installed
+
+- name: Install PyMySQL
+  ansible.builtin.pip:
+    name: PyMySQL
+    state: present
 
 - name: Start MySQL Service
   ansible.builtin.systemd:
