@@ -17,7 +17,7 @@
       ansible.builtin.yum:
         name: mysql-community-server
         state: present
-        
+
 - name: Start the service
   ansible.builtin.systemd:
     name: mysqld
