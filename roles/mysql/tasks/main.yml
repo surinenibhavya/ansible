@@ -10,7 +10,7 @@
 - name: Install MySQL server
   ansible.builtin.dnf:
       name: mysql-community-server
-       state: present
+      state: present
 
 - name: Start and enable MySQL service
   ansible.builtin.service:
