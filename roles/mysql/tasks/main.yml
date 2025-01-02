@@ -1,15 +1,9 @@
-- name: Install MySQL repository
-  yum:
-   name: https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
-   state: present
+- name: Setup MySQL Repo
+  ansible.builtin.copy:
+    src: mysql.repo
+    dest: /etc/yum.repos.d/mysql.repo
 
-- name: Install MySQL server
-  yum:
-   name: mysql-community-server
-   state: present
-
-- name: Ensure MySQL is started and enabled on boot
-  service:
-   name: mysqld
-   state: started
-   enabled: yes
+- name: Install MySQL Server
+  ansible.builtin.yum:
+    name: mysql-community-server
+    state: installed
