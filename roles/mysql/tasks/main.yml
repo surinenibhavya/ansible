@@ -3,21 +3,9 @@
     src: mysql.repo
     dest: /etc/yum.repos.d/mysql.repo
 
-- name: Install MySQL Server
-  ansible.builtin.yum:
-    name:
-      - mysql-community-server
-    state: installed
+- name: Disable MySQL module
+  shell: dnf module disable mysql
 
-- name: Install PyMySQL
-  ansible.builtin.pip:
-    name: PyMySQL
-    state: present
 
-- name: Start MySQL Service
-  ansible.builtin.systemd:
-    name: mysqld
-    state: started
-    enabled: true
 
 
