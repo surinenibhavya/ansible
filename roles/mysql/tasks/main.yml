@@ -1,7 +1,6 @@
-
 - name: Download MySQL repo file
-  get_url:
-    url: https://raw.githubusercontent.com/roboshop-devops-project/mysql/main/mysql.repo
+  ansible.builtin.copy:
+    src: mysql.repo
     dest: /etc/yum.repos.d/mysql.repo
 
 - name: Disable MySQL module
