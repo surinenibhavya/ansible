@@ -1,18 +1,21 @@
+
 - name: Download MySQL repo file
-  get_url:
+   get_url:
     url: https://raw.githubusercontent.com/roboshop-devops-project/mysql/main/mysql.repo
     dest: /etc/yum.repos.d/mysql.repo
 
 - name: Disable MySQL module
+    shell: dnf module disable mysql -y
+
+- name: Install MySQL server
   ansible.builtin.dnf:
-     name: '@mysql-community'
-     state: absent
+      name: mysql-community-server
+       state: present
 
-- name: Install MySQL Server
-  ansible.builtin.yum:
-    name:
-      - mysql-community-server
-    state: installed
-
+- name: Start and enable MySQL service
+  ansible.builtin.service:
+      name: mysqld
+      state: started
+      enabled: yes
 
 
