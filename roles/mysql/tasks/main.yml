@@ -4,9 +4,9 @@
     dest: /etc/yum.repos.d/mysql.repo
 
 - name: Disable MySQL module
-  dnf:
+  dnf_module:
    name: "@mysql"
-   state: absent
+   state: diabled
 
 - name: Install MySQL Server
   ansible.builtin.yum:
