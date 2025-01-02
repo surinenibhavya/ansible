@@ -1,11 +1,23 @@
-- name: Setup MySQL repository and disable MySQL module
-  hosts: all
-  become: yes
-  tasks:
-    - name: Download MySQL repo file
-      get_url:
-        url: https://raw.githubusercontent.com/roboshop-devops-project/mysql/main/mysql.repo
-        dest: /etc/yum.repos.d/mysql.repo
+- name: Setup MySQL Repo
+  ansible.builtin.copy:
+    src: mysql.repo
+    dest: /etc/yum.repos.d/mysql.repo
 
-    - name: Disable MySQL module
-      command: dnf module disable mysql
+- name: Install MySQL Server
+  ansible.builtin.yum:
+    name:
+      - mysql-community-server
+    state: installed
+
+- name: Install PyMySQL
+  ansible.builtin.pip:
+    name: PyMySQL
+    state: present
+
+- name: Start MySQL Service
+  ansible.builtin.systemd:
+    name: mysqld
+    state: started
+    enabled: true
+
+
