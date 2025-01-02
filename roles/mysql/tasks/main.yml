@@ -1,12 +1,12 @@
-- name: Setup MySQL Repo
-  ansible.builtin.copy:
-    src: mysql.repo
+- name: Download MySQL repo file
+  get_url:
+    url: https://raw.githubusercontent.com/roboshop-devops-project/mysql/main/mysql.repo
     dest: /etc/yum.repos.d/mysql.repo
 
-- name: Disable
-  ansible.builtin.dnf:
-    name: 'mysql'
-    state: absent
+- name: Disable MySQL module
+   ansible.builtin.dnf:
+     name: '@mysql-community'
+    state: disabled
 
 - name: Install MySQL Server
   ansible.builtin.yum:
