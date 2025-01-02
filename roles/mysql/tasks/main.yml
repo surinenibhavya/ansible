@@ -6,6 +6,11 @@
 - name: Disable MySQL module
   shell: dnf module disable mysql
 
+- name: Install MySQL Server
+  ansible.builtin.yum:
+    name:
+      - mysql-community-server
+    state: installed
 
 
 
