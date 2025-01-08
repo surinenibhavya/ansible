@@ -38,7 +38,7 @@
 - name: Copy password reset
   ansible.builtin.copy:
     src: pass-reset.sql
-    dest:/tmp/pass.sql
+    dest: /tmp/pass.sql
   when: check_pass.failed
 
 - name: change default password
