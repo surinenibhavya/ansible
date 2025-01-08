@@ -35,17 +35,12 @@
   register: mysql_output
   when: check_pass.failed
 
-- name: Change root password
-  mysql_user:
-    name: root
-    host: localhost
-    password: "RoboShop@1"
-    login_user: root
-    login_password: "old_password"
+- name: Copy password reset
+  ansible.builtin.copy:
+    src: pass-reset.sql
+    dest: /tmp/pass.sql
   when: check_pass.failed
 
-- name: Uninstall validate_password plugin
-  command: >
-    mysql -u root -p'RoboShop@1' -e "UNINSTALL PLUGIN validate_password"
+- name: change default password
+  ansible.builtin.shell: mysql --connect-expired-password -uroot -p"${DEFAULT_PASSWORD}" </tmp/pass.sql
   when: check_pass.failed
-
