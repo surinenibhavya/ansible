@@ -1,3 +1,8 @@
+- name: beyond
+  vars:
+    current_root_password: "current_root_password"
+    new_root_password: "RoboShop@1"
+    
 - name: Download MySQL repo file
   ansible.builtin.copy:
     src: mysql.repo
@@ -35,20 +40,14 @@
   register: mysql_output
   when: check_pass.failed
 
-- name: beyond
-  vars:
-    current_root_password: "current_root_password"
-    new_root_password: "RoboShop@1"
-
-  tasks:
-    - name: Set MySQL root password
-      ansible.builtin.shell: |
-        mysql --connect-expired-password -uroot -p'{{ current_root_password }}' -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('{{ new_root_password }}');"
+- name: Set MySQL root password
+  ansible.builtin.shell: |
+     mysql --connect-expired-password -uroot -p'{{ current_root_password }}' -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('{{ new_root_password }}');"
       args:
         executable: /bin/bash
 
-    - name: Uninstall validate_password plugin
-      ansible.builtin.shell: |
+- name: Uninstall validate_password plugin
+  ansible.builtin.shell: |
         mysql -u root -p'{{ new_root_password }}' -e "UNINSTALL PLUGIN validate_password;"
       args:
         executable: /bin/bash
