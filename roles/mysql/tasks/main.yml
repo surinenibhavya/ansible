@@ -30,11 +30,6 @@
   register: check_pass
   ignore_errors: yes
 
-- name: Print MySQL info
-  debug:
-  ignore_errors: yes
-
-
 - name: print
   debug:
     msg: "{{check_pass}}"
