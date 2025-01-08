@@ -32,7 +32,6 @@
 
 - name: Print MySQL info
   debug:
-    var: check_pass
   ignore_errors: yes
 
 
