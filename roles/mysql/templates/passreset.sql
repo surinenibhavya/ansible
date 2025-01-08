@@ -1,2 +1,2 @@
-SET PASSWORD FOR 'root'@'localhost' = PASSWORD('{{MYSQL_NEW_PASSWORD}}');
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('{{RoboShop@1}}');
 uninstall plugin validate_password;
