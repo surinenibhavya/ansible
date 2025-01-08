@@ -44,7 +44,7 @@
 
     - name: Copy Password Reset SQL
       ansible.builtin.template:
-        src: pass-reset.sql
+        src: passreset.sql
         dest: /tmp/pass.sql
 
     - name: Change Default password
