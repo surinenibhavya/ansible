@@ -10,8 +10,10 @@
   ansible.builtin.yum:
       name:
         - mysql-community-server
-        - python3
       state: present
+- name : install
+  ansible.builtin.pip:
+    name: pymysql
 
 - name: Start and enable MySQL service
   ansible.builtin.service:
