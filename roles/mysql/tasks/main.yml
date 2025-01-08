@@ -25,4 +25,9 @@
   debug:
     msg: "{{ mysql_output}}"
 
+- name: Check if neew password is working
+  mysql_info:
+    login_user: root
+    login_password: RoboShop@1
+    filter: databases
 
