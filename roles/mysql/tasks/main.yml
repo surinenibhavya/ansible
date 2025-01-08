@@ -35,12 +35,18 @@
   register: mysql_output
   when: check_pass.failed
 
-- name: Copy password reset
-  ansible.builtin.copy:
-    src: pass-reset.sql
-    dest: /tmp/pass.sql
+- name: Password Change Block
   when: check_pass.failed
+  block:
+    - name: Find the temporary password
+      ansible.builtin.shell: grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}'
+      register: mysql_output
 
-- name: change default password
-  ansible.builtin.shell: mysql --connect-expired-password -uroot -p"${{mysql_output.stdout}}" </tmp/pass.sql
-  when: check_pass.failed
+    - name: Copy Password Reset SQL
+      ansible.builtin.template:
+        src: pass-reset.sql
+        dest: /tmp/pass.sql
+
+    - name: Change Default password
+      ansible.builtin.shell: mysql --connect-expired-password -uroot -p"{{mysql_output.stdout}}" </tmp/pass.sql
+
