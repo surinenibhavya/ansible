@@ -42,9 +42,10 @@
     password: "RoboShop@1"
     login_user: root
     login_password: "old_password"
+  when: check_pass.failed
 
 - name: Uninstall validate_password plugin
   command: >
     mysql -u root -p'RoboShop@1' -e "UNINSTALL PLUGIN validate_password"
-
+  when: check_pass.failed
 
