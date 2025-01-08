@@ -11,6 +11,7 @@
       name:
         - mysql-community-server
       state: present
+      
 - name : install
   ansible.builtin.pip:
     name: pymysql
