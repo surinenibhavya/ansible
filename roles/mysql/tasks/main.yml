@@ -2,7 +2,7 @@
   vars:
     current_root_password: "current_root_password"
     new_root_password: "RoboShop@1"
-    
+
 - name: Download MySQL repo file
   ansible.builtin.copy:
     src: mysql.repo
@@ -48,6 +48,6 @@
 
 - name: Uninstall validate_password plugin
   ansible.builtin.shell: |
-        mysql -u root -p'{{ new_root_password }}' -e "UNINSTALL PLUGIN validate_password;"
+    mysql -u root -p'{{ new_root_password }}' -e "UNINSTALL PLUGIN validate_password;"
       args:
         executable: /bin/bash
