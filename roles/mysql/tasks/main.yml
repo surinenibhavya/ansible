@@ -35,18 +35,20 @@
   register: mysql_output
   when: check_pass.failed
 
-- name: Password Change Block
-  when: check_pass.failed
-  block:
-    - name: Find the temporary password
-      ansible.builtin.shell: grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}'
-      register: mysql_output
+- name: beyond
+  vars:
+    current_root_password: "current_root_password"
+    new_root_password: "RoboShop@1"
 
-    - name: Copy Password Reset SQL
-      ansible.builtin.template:
-        src: passreset.sql
-        dest: /tmp/pass.sql
+  tasks:
+    - name: Set MySQL root password
+      ansible.builtin.shell: |
+        mysql --connect-expired-password -uroot -p'{{ current_root_password }}' -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('{{ new_root_password }}');"
+      args:
+        executable: /bin/bash
 
-    - name: Change Default password
-      ansible.builtin.shell: mysql --connect-expired-password -uroot -p"{{mysql_output.stdout}}" </tmp/pass.sql
-
+    - name: Uninstall validate_password plugin
+      ansible.builtin.shell: |
+        mysql -u root -p'{{ new_root_password }}' -e "UNINSTALL PLUGIN validate_password;"
+      args:
+        executable: /bin/bash
