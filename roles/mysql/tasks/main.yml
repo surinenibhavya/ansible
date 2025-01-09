@@ -25,7 +25,7 @@
 - name: Check if new password is working
   mysql_info:
     login_user: root
-    login_password: MYSQL_NEW_PASSWORD
+    login_password: "{{MYSQL_NEW_PASSWORD}}"
     filter: databases
   register: check_pass
   ignore_errors: yes
