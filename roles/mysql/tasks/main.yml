@@ -37,7 +37,7 @@
 
 - name: Copy password reset
   ansible.builtin.templates:
-    src: pass-reset.sql
+    src: passreset.sql
     dest: /tmp/pass.sql
   when: check_pass.failed
 
