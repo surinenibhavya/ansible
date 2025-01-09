@@ -43,5 +43,5 @@
 
 - name: print
   debug:
-    msg : "{{mysql_output}}"
+    msg : "{{mysql_output.stdout}}"
 
