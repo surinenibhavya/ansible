@@ -41,12 +41,6 @@
     dest: /tmp/pass.sql
   when: check_pass.failed
 
-
-- name: print
-  debug:
-    msg : "{{check_pass}}"
-
-
 - name: change default password
   ansible.builtin.shell: mysql --connect-expired-password -uroot -p"{{mysql_output.stdout}}" </tmp/pass.sql
   when: check_pass.failed
