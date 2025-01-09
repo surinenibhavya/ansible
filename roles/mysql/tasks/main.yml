@@ -46,3 +46,16 @@
     - name: change default password
       ansible.builtin.shell: mysql --connect-expired-password -uroot -p"{{mysql_output.stdout}}" </tmp/pass.sql
 
+- name: Download database scheme
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: download
+
+- name: Load Schema
+  community.mysql.mysql_db:
+    state: import
+    name: all
+    target:  /tmp/mysql-main/shipping.sql
+    login_user: root
+    login_password: "{{MYSQL_NEW_PASSWORD}}"
+
