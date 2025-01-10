@@ -3,7 +3,7 @@
     name: maven
     state: installed
 
-- name: setup app user adn code
+- name: setup app user and code
   ansible.builtin.import_role:
     name: common
     tasks_from: download
