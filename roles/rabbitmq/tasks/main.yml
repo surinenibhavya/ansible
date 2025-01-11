@@ -4,13 +4,13 @@
 - name: Add Erlang repository
   command: curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo
 
-- name: Install rabbitmq and erlang
-  ansible.builtin.yum:
-   name:
-    - rabbitmq-server
-    - erlang
-  state: installed
-
+- name: Install RabbitMQ and Erlang
+  yum:
+    name:
+      - rabbitmq-server
+      - erlang
+    state: present
+    
 - name: start Rabbitmq server
   ansible.builtin.systemd:
     name: rabbitmq-server
