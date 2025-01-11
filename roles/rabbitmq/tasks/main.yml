@@ -1,6 +1,9 @@
 - name: Setup repo
   ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash
 
+- name: Add Erlang repository
+  command: curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo
+
 - name: Install rabbitmq and erlang
   ansible.builtin.yum:
     - rabbitmq-server
@@ -13,7 +16,7 @@
     state: started
     enabled: yes
 
-- name: setting usre permissions
+- name: setting user permissions
   community.rabbitmq.rabbitmq_user:
     user: roboshop
     password: roboshop123
