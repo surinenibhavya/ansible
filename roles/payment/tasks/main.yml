@@ -1,0 +1,16 @@
+- name: Download and install pacakges
+  ansible.builtin.yum:
+    - python36
+    - gcc
+    - python3-devel
+  state: installed
+
+- name: Setup and create app user
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: download
+
+- name: Install {{COMPONENT}} dependencies
+  ansible.builtin.pip:
+    requirements: /home/roboshop/{{COMPONENT}}
+    executable: pip3
