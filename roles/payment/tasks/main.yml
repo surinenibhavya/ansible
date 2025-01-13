@@ -27,4 +27,5 @@
     line: "{{item.search}} = {{item.replace}}"
   loop:
     - {search: uid, replace: "{{appuser.uid}}"}
+    - {search: gid, replace: "{{appuser.group}}"}
 
