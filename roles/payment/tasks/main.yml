@@ -1,9 +1,10 @@
-- name: Download and install pacakges
+- name: Download and install packages
   ansible.builtin.yum:
-    - python36
-    - gcc
-    - python3-devel
-  state: installed
+    name:
+      - python36
+      - gcc
+      - python3-devel
+    state: installed
 
 - name: Setup and create app user
   ansible.builtin.import_role:
