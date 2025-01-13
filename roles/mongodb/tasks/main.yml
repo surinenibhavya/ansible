@@ -25,6 +25,7 @@
       state: restarted
       enabled: yes
 
+
 - name: Download database scheme
   ansible.builtin.import_role:
       name: common
