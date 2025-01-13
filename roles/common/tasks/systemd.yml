@@ -1,6 +1,6 @@
 - name: Copy {{COMPONENT}}
   ansible.builtin.template:
-    src:  template/systemd.service
+    src:  systemd.service
     dest: /etc/systemd/system/{{COMPONENT}}.service
 
 - name: start {{COMPONENT}} service
