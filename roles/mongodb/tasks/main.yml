@@ -26,10 +26,17 @@
       enabled: yes
 
 
-- name: Download database scheme
-  ansible.builtin.import_role:
-      name: common
-      tasks_from: download
+- name: Download the {{COMPONENT}} from git-hub and extract it
+  unarchive:
+    src: https://github.com/roboshop-devops-project/{{COMPONENT}}/archive/main.zip
+    dest: /tmp
+    remote_src: yes
+
+
+#- name: Download database scheme
+ # ansible.builtin.import_role:
+  #    name: common
+   #   tasks_from: download
 
 - name: Load schema
   community.mongodb.mongodb_shell:
