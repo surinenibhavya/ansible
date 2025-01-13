@@ -13,5 +13,5 @@
 
 - name: Install {{COMPONENT}} dependencies
   ansible.builtin.pip:
-    requirements: /home/roboshop/{{COMPONENT}}
+    requirements: /home/roboshop/{{COMPONENT}}/requirements.txt
     executable: pip3
