@@ -1,20 +1,15 @@
 [Unit]
-Description=Payment Service
-
+Description = Dispatch Service
 [Service]
-User=root
-WorkingDirectory=/home/roboshop/payment
-
-Environment=CART_HOST=cart.roboshop.internal
-Environment=USER_HOST=user.roboshop.internal
+User=roboshop
 Environment=AMQP_HOST=rabbitmq.roboshop.internal
 Environment=AMQP_USER=roboshop
 Environment=AMQP_PASS=roboshop123
-
-ExecStart=/usr/local/bin/uwsgi --ini payment.ini
-ExecStop=/bin/kill -9 $MAINPID
-SyslogIdentifier=payment
+ExecStart=/home/roboshop/dispatch/dispatch
+SyslogIdentifier=dispatch
 
 [Install]
 WantedBy=multi-user.target
+
+
 
