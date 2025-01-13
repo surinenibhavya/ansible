@@ -2,6 +2,7 @@
   ansible.builtin.user:
     name: roboshop
     state: present
+  register: appuser
 
 - name: Download the {{COMPONENT}} from git-hub and extract it
   unarchive:
