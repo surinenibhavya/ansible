@@ -79,3 +79,11 @@
     - payment
   roles:
     - payment
+
+- name: Setup dispatch component
+  hosts: DISPATCH
+  become: yes
+  tags:
+    - dispatch
+  roles:
+    - dispatch
