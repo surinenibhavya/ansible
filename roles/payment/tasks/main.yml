@@ -26,5 +26,5 @@
     search_string: "{{item.search}}"
     line: "{{item.search}} = {{item.replace}}"
   loop:
-    - {search: uid, replace: {{appuser.uid}}}
+    - {search: uid, replace: "{{appuser.uid}}"}
 
