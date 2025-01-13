@@ -19,3 +19,12 @@
 - name: print
   debug:
     msg: "{{appuser}}"
+
+- name: Replace UID and GID
+  lineinfile:
+    path: /home/roboshop/{{COMPONENT}}/{{COMPONENT}}.ini
+    search_string: "{{item.search}}"
+    line: "{{item.search}} = {{item.replace}}"
+  loop:
+    - {search: uid, replace: {{appuser.uid}}}
+
